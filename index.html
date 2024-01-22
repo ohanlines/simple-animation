@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Name Animation</title>
+    <style>
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        #display{
+            font-size: 2em;
+            transition: color 0.5s;
+            font-family: 'Arial'
+        }
+    </style>
+</head>
+<body>
+    <div id="display">CHANGE THIS TEXT COLOR OVERTIME</div>
+
+    <script>
+        const display = document.getElementById('display');
+
+        // Function to generate a random color
+        function getRandomColor() {
+            const letters = '0123456789ABCDEF';
+            let color = '#';
+            for (let i = 0; i < 6; i++) {
+                color += letters[Math.floor(Math.random() * 16)];
+            }
+            return color;
+        }
+
+        // Function to animate the color change
+        function animateColor() {
+            const newColor = getRandomColor();
+            display.style.color = newColor;
+
+            // Schedule the next color change after a certain interval (e.g., 1000 milliseconds)
+            setTimeout(animateColor, 1000);
+        }
+
+        // Start the initial animation
+        animateColor();
+    </script>
+</body>
+</html>
